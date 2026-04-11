@@ -107,7 +107,7 @@ const Recharge = () => {
       {/* Confirm button */}
       <div className="px-4 mt-6 pb-4">
         <button
-          onClick={() => navigate("/dashboard")}
+          onClick={() => navigate("/payment-success", { state: { amount } })}
           className="w-full h-[52px] bg-primary text-primary-foreground rounded-card font-medium text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
         >
           <Lock size={16} />
