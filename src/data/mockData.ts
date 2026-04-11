@@ -3,7 +3,8 @@ export const mockUser = {
   apellido: "De La Rosa",
   initials: "DR",
   email: "daniel@metro.do",
-  cedula: "402-1234567-8",
+  cedula: "001-1234567-8",
+  phone: "+1 (809) 555-0142",
   balance: 350.0,
   cardUID: ["A1", "B2", "C3", "D4"],
   cardType: "MIFARE 1K",
@@ -97,4 +98,58 @@ export const rechargeAmounts = [
   { value: 200, trips: "~10 viajes" },
   { value: 500, trips: "~25 viajes" },
   { value: 1000, trips: "~50 viajes" },
+];
+
+export interface Notification {
+  id: string;
+  title: string;
+  description: string;
+  time: string;
+  dateGroup: string;
+  icon: string;
+  color: "green" | "blue" | "gray";
+  unread: boolean;
+}
+
+export const mockNotifications: Notification[] = [
+  {
+    id: "n1",
+    title: "Recarga exitosa",
+    description: "Tu tarjeta fue recargada con RD$200",
+    time: "hace 2 horas",
+    dateGroup: "Hoy",
+    icon: "arrow-up",
+    color: "green",
+    unread: true,
+  },
+  {
+    id: "n2",
+    title: "Saldo bajo",
+    description: "Tu saldo está por debajo de RD$50. Recarga ahora.",
+    time: "hace 5 horas",
+    dateGroup: "Hoy",
+    icon: "alert-triangle",
+    color: "blue",
+    unread: true,
+  },
+  {
+    id: "n3",
+    title: "Recarga automática",
+    description: "Se recargaron RD$100 automáticamente",
+    time: "ayer 6:00 PM",
+    dateGroup: "Ayer",
+    icon: "refresh-cw",
+    color: "green",
+    unread: false,
+  },
+  {
+    id: "n4",
+    title: "Acceso al Metro",
+    description: "Pasaje descontado en Línea 1 - Centro de los Héroes",
+    time: "ayer 7:30 AM",
+    dateGroup: "Ayer",
+    icon: "train",
+    color: "gray",
+    unread: false,
+  },
 ];

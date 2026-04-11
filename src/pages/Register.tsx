@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Loader2 } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
+import { toast } from "sonner";
 
 const Register = () => {
   const navigate = useNavigate();
+  const { signUp, actionLoading } = useAuth();
   const [form, setForm] = useState({
     nombre: "", apellido: "", email: "", cedula: "", password: "", confirmPassword: "",
   });
@@ -31,9 +35,15 @@ const Register = () => {
   const strengthColors = ["bg-destructive", "bg-alert", "bg-gold", "bg-success"];
   const strength = passwordStrength();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/login", { replace: true });
+    const error = await signUp(form.email, form.password, form.nombre, form.apellido, form.cedula);
+    if (error) {
+      toast.error(error);
+    } else {
+      toast.success("Cuenta creada exitosamente. Inicia sesión.");
+      navigate("/login", { replace: true });
+    }
   };
 
   return (
@@ -90,9 +100,10 @@ const Register = () => {
             </span>
           </label>
 
-          <button type="submit" disabled={!accepted}
-            className="w-full h-12 bg-primary text-primary-foreground rounded-button font-medium text-sm hover:opacity-90 transition-opacity disabled:opacity-50 mt-2">
-            Crear cuenta
+          <button type="submit" disabled={!accepted || actionLoading}
+            className="w-full h-12 bg-primary text-primary-foreground rounded-button font-medium text-sm hover:opacity-90 transition-opacity disabled:opacity-50 mt-2 flex items-center justify-center gap-2">
+            {actionLoading && <Loader2 size={18} className="animate-spin" />}
+            {actionLoading ? "Creando cuenta..." : "Crear cuenta"}
           </button>
         </form>
 
