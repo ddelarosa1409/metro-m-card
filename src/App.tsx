@@ -11,6 +11,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import Dashboard from "./pages/Dashboard";
 import Recharge from "./pages/Recharge";
 import PaymentSuccess from "./pages/PaymentSuccess";
+import PaymentError from "./pages/PaymentError";
 import History from "./pages/History";
 import Cards from "./pages/Cards";
 import AutoRecharge from "./pages/AutoRecharge";
@@ -40,6 +41,7 @@ const App = () => (
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
           <Route path="/recharge" element={<ProtectedRoute><Recharge /></ProtectedRoute>} />
           <Route path="/payment-success" element={<ProtectedRoute><PaymentSuccess /></ProtectedRoute>} />
+          <Route path="/payment-error" element={<ProtectedRoute><PaymentError /></ProtectedRoute>} />
           <Route path="/history" element={<ProtectedRoute><History /></ProtectedRoute>} />
           <Route path="/cards" element={<ProtectedRoute><Cards /></ProtectedRoute>} />
           <Route path="/auto-recharge" element={<ProtectedRoute><AutoRecharge /></ProtectedRoute>} />

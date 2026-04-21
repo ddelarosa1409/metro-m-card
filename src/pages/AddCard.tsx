@@ -4,6 +4,7 @@ import { CreditCard, Calendar, Lock, User, ShieldCheck } from "lucide-react";
 import AppLayout from "@/components/AppLayout";
 import TopBar from "@/components/TopBar";
 import { toast } from "sonner";
+import { addCard } from "@/lib/cardsStore";
 
 const formatCard = (v: string) =>
   v.replace(/\D/g, "").slice(0, 16).replace(/(.{4})/g, "$1 ").trim();
@@ -44,9 +45,17 @@ const AddCard = () => {
 
     setLoading(true);
     await new Promise((r) => setTimeout(r, 800));
+    addCard({
+      last4: digits.slice(-4),
+      brand,
+      bank: "Banco emisor",
+      holder: holder.trim().toUpperCase(),
+      expiry,
+      isDefault: setDefault,
+    });
     setLoading(false);
     toast.success("Tarjeta agregada exitosamente");
-    navigate(-1);
+    navigate("/cards");
   };
 
   return (
