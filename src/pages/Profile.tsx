@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ChevronRight, LogOut } from "lucide-react";
+import { ChevronRight, LogOut, Lock } from "lucide-react";
 import AppLayout from "@/components/AppLayout";
 import TopBar from "@/components/TopBar";
 import { mockUser } from "@/data/mockData";
@@ -49,20 +49,37 @@ const Profile = () => {
           <p className="px-4 pt-4 pb-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
             Información personal
           </p>
+          <button onClick={() => navigate("/profile/edit?field=nombre")} className="w-full px-4 py-3 flex items-center justify-between text-left">
+            <div>
+              <p className="text-xs text-muted-foreground">Nombre completo</p>
+              <p className="text-sm font-medium text-foreground">{mockUser.nombre} {mockUser.apellido}</p>
+            </div>
+            <ChevronRight size={18} className="text-muted-foreground" />
+          </button>
+          <button onClick={() => navigate("/profile/edit?field=email")} className="w-full px-4 py-3 flex items-center justify-between text-left">
+            <div>
+              <p className="text-xs text-muted-foreground">Correo electrónico</p>
+              <p className="text-sm font-medium text-foreground">{mockUser.email}</p>
+            </div>
+            <ChevronRight size={18} className="text-muted-foreground" />
+          </button>
           <div className="px-4 py-3 flex items-center justify-between">
             <div>
-              <p className="text-xs text-muted-foreground">Cédula</p>
+              <p className="text-xs text-muted-foreground flex items-center gap-1">
+                Cédula <Lock size={10} />
+              </p>
               <p className="text-sm font-medium text-foreground">{mockUser.cedula}</p>
+              <p className="text-[10px] text-muted-foreground mt-0.5">No editable · Identidad única</p>
             </div>
           </div>
-          <div className="px-4 py-3 flex items-center justify-between">
+          <button onClick={() => navigate("/profile/edit?field=phone")} className="w-full px-4 py-3 flex items-center justify-between text-left">
             <div>
               <p className="text-xs text-muted-foreground">Teléfono</p>
               <p className="text-sm font-medium text-foreground">{mockUser.phone || "Agregar teléfono"}</p>
             </div>
             <ChevronRight size={18} className="text-muted-foreground" />
-          </div>
-          <button className="w-full px-4 py-3 flex items-center justify-between">
+          </button>
+          <button onClick={() => navigate("/profile/edit?field=password")} className="w-full px-4 py-3 flex items-center justify-between">
             <p className="text-sm font-medium text-foreground">Cambiar contraseña</p>
             <ChevronRight size={18} className="text-muted-foreground" />
           </button>
@@ -96,8 +113,12 @@ const Profile = () => {
             <p className="text-sm font-medium text-foreground">Autenticación biométrica</p>
             <Toggle checked={biometric} onChange={setBiometric} />
           </div>
-          <button className="w-full px-4 py-3 flex items-center justify-between">
+          <button onClick={() => navigate("/profile/sessions")} className="w-full px-4 py-3 flex items-center justify-between">
             <p className="text-sm font-medium text-foreground">Sesiones activas</p>
+            <ChevronRight size={18} className="text-muted-foreground" />
+          </button>
+          <button onClick={() => navigate("/terms")} className="w-full px-4 py-3 flex items-center justify-between">
+            <p className="text-sm font-medium text-foreground">Términos y privacidad</p>
             <ChevronRight size={18} className="text-muted-foreground" />
           </button>
         </div>
