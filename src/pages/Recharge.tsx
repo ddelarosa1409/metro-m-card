@@ -107,8 +107,20 @@ const Recharge = () => {
       {/* Confirm button */}
       <div className="px-4 mt-6 pb-4">
         <button
-          onClick={() => navigate("/payment-success", { state: { amount } })}
-          className="w-full h-[52px] bg-primary text-primary-foreground rounded-card font-medium text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
+          onClick={() => {
+            if (amount <= 0) return;
+            // Simulación: ~25% de las recargas fallan con código aleatorio
+            const fail = Math.random() < 0.25;
+            if (fail) {
+              const codes = ["declined", "insufficient", "network", "expired"];
+              const code = codes[Math.floor(Math.random() * codes.length)];
+              navigate("/payment-error", { state: { amount, code } });
+            } else {
+              navigate("/payment-success", { state: { amount } });
+            }
+          }}
+          className="w-full h-[52px] bg-primary text-primary-foreground rounded-card font-medium text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-50"
+          disabled={amount <= 0}
         >
           <Lock size={16} />
           Confirmar recarga — RD${amount.toLocaleString()}
