@@ -16,6 +16,10 @@ import Cards from "./pages/Cards";
 import AutoRecharge from "./pages/AutoRecharge";
 import LinkNFC from "./pages/LinkNFC";
 import Profile from "./pages/Profile";
+import EditProfile from "./pages/EditProfile";
+import ActiveSessions from "./pages/ActiveSessions";
+import AddCard from "./pages/AddCard";
+import Terms from "./pages/Terms";
 import Notifications from "./pages/Notifications";
 import NotFound from "./pages/NotFound";
 
@@ -41,6 +45,10 @@ const App = () => (
           <Route path="/auto-recharge" element={<ProtectedRoute><AutoRecharge /></ProtectedRoute>} />
           <Route path="/link-nfc" element={<ProtectedRoute><LinkNFC /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/profile/edit" element={<ProtectedRoute><EditProfile /></ProtectedRoute>} />
+          <Route path="/profile/sessions" element={<ProtectedRoute><ActiveSessions /></ProtectedRoute>} />
+          <Route path="/cards/add" element={<ProtectedRoute><AddCard /></ProtectedRoute>} />
+          <Route path="/terms" element={<Terms />} />
           <Route path="/notifications" element={<ProtectedRoute><Notifications /></ProtectedRoute>} />
           <Route path="*" element={<NotFound />} />
         </Routes>

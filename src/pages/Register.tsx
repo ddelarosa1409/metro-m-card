@@ -95,8 +95,14 @@ const Register = () => {
             <input type="checkbox" checked={accepted} onChange={(e) => setAccepted(e.target.checked)}
               className="mt-1 w-4 h-4 rounded accent-primary-medium" />
             <span className="text-xs text-muted-foreground leading-relaxed">
-              Acepto los <span className="text-primary-medium font-medium">Términos</span> y{" "}
-              <span className="text-primary-medium font-medium">Política de privacidad</span>
+              Acepto los{" "}
+              <button type="button" onClick={(e) => { e.preventDefault(); navigate("/terms?tab=terms"); }} className="text-primary-medium font-medium underline-offset-2 hover:underline">
+                Términos
+              </button>{" "}
+              y{" "}
+              <button type="button" onClick={(e) => { e.preventDefault(); navigate("/terms?tab=privacy"); }} className="text-primary-medium font-medium underline-offset-2 hover:underline">
+                Política de privacidad
+              </button>
             </span>
           </label>
 
