@@ -8,7 +8,7 @@ const Cards = () => {
   const navigate = useNavigate();
   return (
     <AppLayout>
-      <TopBar title="Mis tarjetas" showBack={false} />
+      <TopBar title="Mis tarjetas" showBack={true} />
 
       {/* Card visual */}
       <div className="px-4 mt-4">

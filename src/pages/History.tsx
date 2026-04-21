@@ -31,7 +31,7 @@ const History = () => {
 
   return (
     <AppLayout>
-      <TopBar title="Historial" showBack={false} />
+      <TopBar title="Historial" showBack={true} />
 
       {/* Filters */}
       <div className="px-4 mt-4 flex gap-2 overflow-x-auto pb-2">
