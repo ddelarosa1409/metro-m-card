@@ -101,7 +101,7 @@ const Recharge = () => {
             </button>
           ))}
         </div>
-        <button className="text-primary-medium text-sm font-medium mt-3">+ Agregar tarjeta</button>
+        <button onClick={() => navigate("/cards/add")} className="text-primary-medium text-sm font-medium mt-3">+ Agregar tarjeta</button>
       </div>
 
       {/* Confirm button */}

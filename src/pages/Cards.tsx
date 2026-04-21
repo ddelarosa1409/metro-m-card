@@ -1,9 +1,11 @@
 import { Plus } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import AppLayout from "@/components/AppLayout";
 import TopBar from "@/components/TopBar";
 import { mockSavedCard, mockUser } from "@/data/mockData";
 
 const Cards = () => {
+  const navigate = useNavigate();
   return (
     <AppLayout>
       <TopBar title="Mis tarjetas" showBack={false} />
@@ -42,7 +44,7 @@ const Cards = () => {
 
       {/* Add new card */}
       <div className="px-4 mt-6">
-        <button className="w-full border-2 border-dashed border-primary-light rounded-card p-8 flex flex-col items-center gap-2 hover:bg-primary-light/20 transition-colors">
+        <button onClick={() => navigate("/cards/add")} className="w-full border-2 border-dashed border-primary-light rounded-card p-8 flex flex-col items-center gap-2 hover:bg-primary-light/20 transition-colors">
           <div className="w-12 h-12 rounded-full bg-primary-light flex items-center justify-center">
             <Plus size={24} className="text-primary-medium" />
           </div>
